@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 app.secret_key = "secret123"
 
-PASSWORD = "love"
+PASSWORD = "0508"
 
 @app.route("/", methods=["GET", "POST"])
 def login():
