@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Share</title>
+
+    <style>
+        body{
+            margin:0;
+            height:100vh;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            flex-direction:column;
+
+            background:#ffd6e7;
+            font-family:sans-serif;
+        }
+
+        .heart{
+            font-size:80px;
+        }
+
+        .bpm{
+            font-size:60px;
+            font-weight:bold;
+            margin-top:10px;
+        }
+
+        .status{
+            margin-top:20px;
+            font-size:20px;
+            color:#555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="heart">♡</div>
+
+    <div class="bpm" id="bpm">
+    -- BPM
+</div>
+
+    <div class="status">
+        Connected...
+    </div>
+
+</body>
+<script>
+
+async function updateHeart(){
+
+    const response = await fetch("/heart");
+
+    const data = await response.json();
+
+    document.getElementById("bpm").innerText =
+        data.bpm + " BPM";
+}
+
+setInterval(updateHeart, 1000);
+
+updateHeart();
+
+</script>
+</html>
